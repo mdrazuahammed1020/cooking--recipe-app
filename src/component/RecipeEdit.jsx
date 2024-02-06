@@ -2,7 +2,8 @@
 
 import RecipeIngredientEdit from "./RecipeIngredientEdit";
 
-export default function RecipeEdit() {
+export default function RecipeEdit(props) {
+  const {} = props;
   return (
     <div className="recipe--edit">
         <div className="recipe-edit__remove-button-container">
