@@ -18,6 +18,7 @@ export default function RecipeEdit({ recipe }) {
     handleChange({ ingredients: newIngredient })
   }
 
+  
   function handleIngredientAdd(){
     const newIngredient = {
       id: uuidv4(),
@@ -25,6 +26,10 @@ export default function RecipeEdit({ recipe }) {
       amount: ''
     }
     handleChange({ingredients: [...recipe.ingredients, newIngredient]})
+  }
+
+  function ingredientDelete(id){
+   handleChange({ingredients: recipe.ingredients.filter(i => i.id !==id)})
   }
  
   return (
@@ -48,7 +53,7 @@ export default function RecipeEdit({ recipe }) {
             name="name" 
             id="name" 
             value={recipe.name}
-            onInput={e=> handleChange({name: e.target.value})}
+            onChange={e=> handleChange({name: e.target.value})}
             className="recipe-edit__input"/>
           <label
             htmlFor="cookTime"
@@ -60,7 +65,7 @@ export default function RecipeEdit({ recipe }) {
            name="cookTime" 
            id="cookTime" 
            value={recipe.cookTime}
-           onInput={e=> handleChange({cookTime: e.target.value})}
+           onChange={e=> handleChange({cookTime: e.target.value})}
            className="recipe-edit__input"/>
           <label 
             htmlFor="servings"
@@ -73,7 +78,7 @@ export default function RecipeEdit({ recipe }) {
             name="servings" 
             id="servings" 
             value={recipe.servings}
-            onInput={e=> handleChange({servings: parseInt(e.target.value) || ''})}
+            onChange={e=> handleChange({servings: parseInt(e.target.value) || ''})}
             className="recipe-edit__input"/>
           <label 
             htmlFor="instructions"
@@ -85,7 +90,7 @@ export default function RecipeEdit({ recipe }) {
             id="instructions" 
             className="recipe-edit__input"
             value={recipe.instructions}  
-            onInput={e=> handleChange({instructions: e.target.value})}
+            onChange={e=> handleChange({instructions: e.target.value})}
             />
         </div>
         <br />
@@ -100,6 +105,7 @@ export default function RecipeEdit({ recipe }) {
               key={ingredient.id} 
               ingredient ={ingredient}
               handleIngredientChange = {handleIngredientChange}
+              ingredientDelete= {ingredientDelete}
               />))
           }
         </div>
