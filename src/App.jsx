@@ -3,6 +3,7 @@ import RecipeList from "./component/RecipeList"
 import '../src/css/app.css'
 import { v4 as uuidv4 } from 'uuid';
 import RecipeEdit from "./component/RecipeEdit";
+import Header from "./component/Header";
 
 export const RecipeContext = React.createContext();
 const LOCAL_STORAGE_KEY = 'cookingRecipeApp.react';
@@ -66,6 +67,7 @@ function App() {
   
   return (
     <RecipeContext.Provider value={recipeContextValue} >
+      <Header />
       <RecipeList recipes={recipes} />
       {selectedRecipe && <RecipeEdit recipe = {selectedRecipe} /> }
     </RecipeContext.Provider>

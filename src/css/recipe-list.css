@@ -3,6 +3,8 @@
     min-height: 100vh;
     /* background-color: red; */
     width: 50%;
+    position: relative;
+    top: 110px;
 }
 
 .recipe-list_btn_container{
